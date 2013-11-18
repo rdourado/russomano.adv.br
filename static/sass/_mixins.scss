@@ -22,6 +22,12 @@
 			animation: $prop;
 }
 
+@mixin appearance($value:none) {
+	-webkit-appearance: $value;
+	   -moz-appearance: $value;
+			appearance: $value;
+}
+
 @mixin box-sizing {
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;

@@ -1,6 +1,6 @@
 <?php get_header() ?>
 	<section class="body">
-		<h1 class="title"><span>Artigos e Notícias</span></h1>
+		<h1 class="title"><span><?php echo is_search() ? 'Resultado da Busca' : 'Artigos e Notícias'; ?></span></h1>
 		<div class="wrap">
 			<div class="wrap-in">
 				<div class="content">
@@ -22,6 +22,7 @@
 <?php 					endwhile; ?>
 					</ol>
 <?php 				endif; ?>
+<?php 				if ( function_exists( 'wp_pagenavi' ) ) wp_pagenavi(); ?>
 				</div>
 <?php 			get_sidebar() ?>
 			</div>

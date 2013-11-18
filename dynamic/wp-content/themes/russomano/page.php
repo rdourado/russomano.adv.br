@@ -8,7 +8,7 @@
 					<?php the_content() ?>
 				</div>
 <?php 			endwhile; ?>
-<?php 			get_sidebar() ?>
+<?php 			my_get_sidebar() ?>
 			</div>
 		</div>
 	</article>

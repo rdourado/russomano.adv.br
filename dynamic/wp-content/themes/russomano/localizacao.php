@@ -11,27 +11,13 @@ Template name: Localização
 			<div class="wrap-in">
 				<?php the_content() ?>
 				<ul class="child-list">
+<?php 				while( has_sub_field( 'localidades' ) ) : ?>
 					<li class="child-item child-page">
-						<a href="#">
-							<h3 class="child-title">Brasília — DF</h3>
-							<img src="http://dummyimage.com/292x192" alt="" class="child-image" width="292" height="192">
-							<p class="child-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-						</a>
+						<h3 class="child-title"><?php the_sub_field( 'title' ) ?></h3>
+						<div class="child-frame"><?php the_sub_field( 'map' ) ?></div>
+						<p class="child-text"><?php the_sub_field( 'address' ) ?></p>
 					</li>
-					<li class="child-item child-page">
-						<a href="#">
-							<h3 class="child-title">Juiz de Fora — MG</h3>
-							<img src="http://dummyimage.com/292x192" alt="" class="child-image" width="292" height="192">
-							<p class="child-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-						</a>
-					</li>
-					<li class="child-item child-cat-equipe">
-						<a href="#">
-							<h3 class="child-title">Belo Horizonte — MG</h3>
-							<img src="http://dummyimage.com/292x192" alt="" class="child-image" width="292" height="192">
-							<p class="child-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-						</a>
-					</li>
+<?php 				endwhile; ?>
 				</ul>
 			</div>
 		</div>

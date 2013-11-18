@@ -1,11 +1,24 @@
 				<div class="sidebar">
-					<aside class="widget widget-text">
-						<h2 class="widget-title">Nossa Estrutura</h2>
-						<div class="textwidget">
-							<p><a href="#"><img src="http://dummyimage.com/292x192" alt="" width="292" height="192"></a></p>
-							<p><a href="#"><img src="http://dummyimage.com/292x192" alt="" width="292" height="192"></a></p>
-							<p><a href="#"><img src="http://dummyimage.com/292x192" alt="" width="292" height="192"></a></p>
-							<p><a href="#"><img src="http://dummyimage.com/292x192" alt="" width="292" height="192"></a></p>
-						</div>
+					<aside class="widget widget-search">
+						<h3 class="widget-title">Faça uma busca</h3>
+						<form action="<?php echo home_url( '/' ); ?>" method="get" class="searchform">
+							<fieldset>
+								<legend>Busca</legend>
+								<input type="text" name="s" id="s" class="text" required aria-required="true" placeholder="Digite o que procura e dê “enter”" aria-label="Buscar por">
+								<button type="submit">Ok</button>
+							</fieldset>
+						</form>
 					</aside>
+					<aside class="widget widget-newsletter">
+						<h3 class="widget-title">Assine a newsletter</h3>
+						<form action="/" method="post" class="newsform">
+							<fieldset>
+								<legend>Newsletter</legend>
+								<input type="email" name="" id="" class="text" required aria-required="true" placeholder="Digite o seu e-mail e dê “enter”" aria-label="Buscar por">
+								<button type="submit">Ok</button>
+								<a href="#" class="privacy">Acesse a Política de Privacidade</a>
+							</fieldset>
+						</form>
+					</aside>
+<?php 				get_template_part( 'widget', 'services' ) ?>
 				</div>
