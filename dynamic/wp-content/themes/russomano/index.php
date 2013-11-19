@@ -2,18 +2,19 @@
 /*
 Template name: Home
 */
+global $homeID;
 ?>
 <?php get_header() ?>
 	<section class="welcome">
 		<div class="wrap">
-			<h2 class="welcome-title"><?php the_field( 'welcome_title' ) ?></h2>
-			<p class="welcome-text"><?php the_field( 'welcome_text' ) ?></p>
+			<h2 class="welcome-title"><?php the_field( 'welcome_title', $homeID ) ?></h2>
+			<p class="welcome-text"><?php the_field( 'welcome_text', $homeID ) ?></p>
 		</div>
 	</section>
 	<div class="wrap">
 		<div class="wrap-in">
 			<ul class="child-list">
-<?php 			while( has_sub_field( 'highlights' ) ) : ?>
+<?php 			while( has_sub_field( 'highlights', $homeID ) ) : ?>
 				<li class="child-item">
 					<a href="<?php the_sub_field( 'link' ) ?>">
 						<h3 class="child-title"><?php the_sub_field( 'title' ) ?></h3>

@@ -13,7 +13,8 @@
 <?php 					while( have_posts() ) : the_post(); ?>
 						<li class="archive-item">
 							<a href="<?php the_permalink() ?>">
-								<img src="http://dummyimage.com/112x112" alt="" class="archive-image" width="112" height="112">
+								<?php the_post_thumbnail( 'clippings' ) ?>
+
 								<h2 class="archive-title"><?php the_title() ?></h2>
 								<p class="archive-excerpt"><?php the_excerpt() ?></p>
 								<small class="archive-action">Leia esse artigo completo</small>

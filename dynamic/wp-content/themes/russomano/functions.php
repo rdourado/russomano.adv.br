@@ -48,6 +48,12 @@ function page_title() {
 	echo $parent ? get_the_title( $parent ) : get_the_title( $pid );
 }
 
+function my_get_sidebar() {
+	global $post;
+	$page = $post->post_parent ? get_post( $post->post_parent ) : $post;
+	get_sidebar( $page->post_name );
+}
+
 function my_comment_form() {
 	global $post, $commenter, $aria_req;
 	
@@ -78,10 +84,32 @@ function my_comment_form() {
 	) );
 }
 
-function my_get_sidebar() {
-	global $post;
-	$page = $post->post_parent ? get_post( $post->post_parent ) : $post;
-	get_sidebar( $page->post_name );
+function my_theme_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	extract( $args, EXTR_SKIP );
+	$comment_class = empty( $args['has_children'] ) ? '' : 'parent';
+?>
+	<li <?php comment_class( $comment_class ) ?> id="comment-<?php comment_ID() ?>">
+		<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+			<div class="comment-author vcard">
+				<cite class="fn"><?php comment_author_link() ?></cite> 
+				comentou em <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time( get_option( 'date_format' ) ) ?></a>.
+			</div>
+<?php 		if ($comment->comment_approved == '0') : ?>
+			<em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
+			<br />
+<?php 		endif; ?>
+
+			<?php comment_text() ?>
+
+			<div class="reply"><?php 
+			comment_reply_link( array_merge( $args, array(
+				'add_below' => 'div-comment',
+				'max_depth' => $args['max_depth'],
+				'depth' 	=> $depth,
+			) ) ); ?></div>
+		</div>
+<?php
 }
 
 // Setup
@@ -92,7 +120,7 @@ function my_setup() {
 	// Menu
 	register_nav_menu( 'primary', 'Menu' );
 	// Image sizes
-	add_theme_support( 'post-thumbnails', array( 'page' ) );
+	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 292, 192, true );
 	add_image_size( 'clippings', 112, 112, true );
 }
@@ -101,7 +129,8 @@ function my_setup() {
 
 remove_filter( 'the_excerpt', 'wpautop' );
 add_filter( 'body_class', 'my_class_names' );
-// add_filter( 'pre_get_posts', 'search_filter' );
+add_filter( 'pre_get_posts', 'search_filter' );
+add_filter( 'wpcf7_form_elements', 'my_wpcf7_form_elements' );
 
 function my_class_names( $classes ) {
 	global $post;
@@ -114,6 +143,12 @@ function search_filter( $query ) {
 	if ( $query->is_search ) 
 		$query->set( 'post_type', 'post' );
 	return $query;
+}
+
+function my_wpcf7_form_elements($html) {
+	$text = 'Assunto:';
+	$html = str_replace('<option value="">---</option>', '<option value="">' . $text . '</option>', $html);
+	return $html;
 }
 
 // Shortcode

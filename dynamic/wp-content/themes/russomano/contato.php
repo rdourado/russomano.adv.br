@@ -14,7 +14,7 @@ if ( function_exists( 'wpcf7_enqueue_scripts' ) ) wpcf7_enqueue_scripts();
 					<?php the_content() ?>
 				</div>
 <?php 			endwhile; ?>
-<?php 			get_sidebar() ?>
+<?php 			get_sidebar( 'contato' ) ?>
 			</div>
 		</div>
 	</article>

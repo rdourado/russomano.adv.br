@@ -1,7 +1,10 @@
+<?php 			global $post; ?>
 				<div class="sidebar">
 					<aside class="widget widget-text">
 						<div class="textwidget">
-							<p><a href="#"><img src="http://dummyimage.com/292x192" alt="" width="292" height="192"></a></p>
+<?php 						while( has_sub_field( 'gallery' ) ) : ?>
+							<p><a href="<?php echo reset( wp_get_attachment_image_src( get_sub_field( 'image' ), 'full' ) ); ?>" class="fancybox"><?php echo wp_get_attachment_image( get_sub_field( 'image' ), 'post-thumbnail' ); ?></a></p>
+<?php 						endwhile; ?>
 						</div>
 					</aside>
 				</div>

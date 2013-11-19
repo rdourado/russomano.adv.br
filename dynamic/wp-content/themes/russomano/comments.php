@@ -4,7 +4,8 @@
 						<ol class="comment-list">
 							<?php
 							wp_list_comments( array(
-								'reply_text'  => 'Responder',
+								'callback' 	  => 'my_theme_comment',
+								'reply_text'  => 'Responder esse usuário',
 								'style'       => 'ol',
 								'format' 	  => 'html5',
 								'short_ping'  => true,

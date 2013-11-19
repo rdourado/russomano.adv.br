@@ -101,7 +101,7 @@ a
 		text-transform: uppercase
 		@include transition(color)
 		&:hover, &:focus, &:active
-			color: rgb(189,157,0)
+			color: $overColor
 		&:before
 			content: ''
 			display: block
@@ -113,9 +113,10 @@ a
 			@include linear-gradient(top, (rgb(189,189,189) $borderColor rgb(189,189,189)), (0 50% 100%))
 
 .current-menu-item,
+.current_page_parent,
 .current-page-ancestor
 	a
-		color: rgb(189,157,0)
+		color: $overColor
 
 .menu-item-home 
 	+ .menu-item a:before
@@ -304,6 +305,100 @@ a
 	font: 20px/22px $font2
 	margin-bottom: 22px
 	text-transform: uppercase
+
+.post-date
+	float: left
+	font: 12px $font2
+	margin: 0 25px 12px
+	@include icon(calendar)
+
+.post-categories
+	@extend .post-date
+	@include icon(stripeY)
+	a
+		color: $textColor
+
+.post-tags
+	clear: left
+	font: 12px $font2
+	margin: 0 25px 12px
+	@include icon(pin)
+	a
+		color: $textColor
+
+.post-content
+	clear: left
+	padding-top: 10px
+	p
+		font-size: 14px
+	blockquote
+		border-left: 4px solid $borderColor
+		margin: 0 80px
+		padding-left: 16px
+		@include icon(quote, -78px, 0, 52px, 48px)
+		p
+			color: $overColor
+			font-size: 18px
+			font-style: italic
+
+.post-author
+	background: $hrColor
+	clear: both
+	color: #fff
+	font: 12px/16px $font1
+	margin: 44px 0
+	min-height: 60px
+	padding: 22px 18px 22px 95px
+	position: relative
+	@include border-radius(8px)
+	img
+		display: block
+		left: 18px
+		position: absolute
+		top: 22px
+.author-name
+	color: rgb(255,212,0)
+	margin-bottom: 5px
+
+.comments-title,
+.comment-reply-title
+	color: $overColor
+	font: 14px/22px $font1
+	margin-bottom: 22px
+.comment-reply-title
+	a
+		color: $overColor
+		font-weight: bold
+	#cancel-comment-reply-link
+		font-weight: normal
+		text-decoration: underline
+.logged-in-as
+	color: $textColor
+	font: 12px/16px $font1
+	margin-bottom: 8px
+	a
+		color: $textColor
+		text-decoration: underline
+
+.comment
+	clear: both
+	font: 12px/18px $font1
+	a
+		color: $overColor
+		text-decoration: underline
+	cite
+		color: $overColor
+		font-style: normal
+	.comment-reply-link
+		font-weight: bold
+		text-decoration: none
+.depth-2
+	font-style: italic
+	margin-left: 60px
+.comment-body
+	margin-bottom: 22px
+.reply
+	padding-top: 11px
 
 .child-list
 	@include clearfix
@@ -507,7 +602,7 @@ a
 		&:after
 			content: '” '
 	footer
-		color: rgb(189,157,0)
+		color: $overColor
 		display: inline
 		font-size: 14px
 
@@ -578,6 +673,7 @@ a
 .button, #submit
 	width: 540px
 .sel
+	cursor: pointer
 	height: 37px
 	@include appearance
 .button, #submit
