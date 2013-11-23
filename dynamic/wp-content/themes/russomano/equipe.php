@@ -16,7 +16,7 @@ Template name: Equipe
 				<ul class="team-list team-wide">
 <?php 				while( has_sub_field( 'diretoria' ) ) : ?>
 					<li class="team-item">
-						<?php echo wp_get_attachment_image( get_sub_field( 'image' ), 'post-thumbnail' ); ?>
+						<?php my_field_image( get_sub_field( 'image' ), 'post-thumbnail' ); ?>
 
 						<h3 class="team-name"><?php the_sub_field( 'name' ) ?></h3>
 						<p class="team-job"><?php the_sub_field( 'job' ) ?></p>
@@ -30,7 +30,7 @@ Template name: Equipe
 				<ul class="team-list">
 <?php 				while( has_sub_field( 'advogados' ) ) : ?>
 					<li class="team-item">
-						<?php echo wp_get_attachment_image( get_sub_field( 'image' ), 'thumbnail' ); ?>
+						<?php my_field_image( get_sub_field( 'image' ), 'thumbnail' ); ?>
 
 						<h3 class="team-name"><?php the_sub_field( 'name' ) ?></h3>
 						<p class="team-job"><?php the_sub_field( 'job' ) ?></p>
@@ -44,7 +44,7 @@ Template name: Equipe
 				<ul class="team-list">
 <?php 				while( has_sub_field( 'consultores' ) ) : ?>
 					<li class="team-item">
-						<?php echo wp_get_attachment_image( get_sub_field( 'image' ), 'thumbnail' ); ?>
+						<?php my_field_image( get_sub_field( 'image' ), 'thumbnail' ); ?>
 
 						<h3 class="team-name"><?php the_sub_field( 'name' ) ?></h3>
 					</li>

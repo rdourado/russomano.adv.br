@@ -14,7 +14,7 @@ Template name: Mídia
 				<ol class="archive-list">
 <?php 				while( $loop->have_posts() ) : $loop->the_post(); ?>
 					<li class="archive-item">
-						<a href="<?php the_field( 'clipping' ) ?>" class="fancybox">
+						<a href="<?php the_permalink() ?>" class="fancybox-ajax">
 							<?php echo wp_get_attachment_image( get_field( 'image' ), 'clippings' ); ?>
 
 							<h3 class="archive-title"><?php the_title() ?></h3>

@@ -54,6 +54,19 @@ function my_get_sidebar() {
 	get_sidebar( $page->post_name );
 }
 
+function my_field_image( $value, $size ) {
+	if ( ! empty( $value ) ) {
+		echo wp_get_attachment_image( $value, $size );
+	} else {
+		$attr = '';
+		switch( $size ) {
+			case 'thumbnail' : $attr = 'width="292" height="192"'; break;
+			default : $attr = 'width="212" height="192"'; break;
+		}
+		echo '<img src="' . get_stylesheet_directory_uri() . '/img/dot.gif" alt="" ' . $attr . ' />';
+	}
+}
+
 function my_comment_form() {
 	global $post, $commenter, $aria_req;
 	
@@ -124,6 +137,19 @@ function my_setup() {
 	set_post_thumbnail_size( 292, 192, true );
 	add_image_size( 'clippings', 112, 112, true );
 }
+
+// Actions
+
+add_action( 'wp_enqueue_scripts', 'my_scripts' );
+
+function my_scripts() {
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', 'http://code.jquery.com/jquery-1.9.0.min.js', false, null, true );
+	wp_enqueue_script( 'jquery' );
+	
+	wp_enqueue_script( 'interface', get_stylesheet_directory_uri() . '/js/interface.min.js', array( 'jquery' ), filemtime( TEMPLATEPATH . '/js/interface.min.js' ), true );
+}
+
 
 // Filters
 
@@ -209,7 +235,7 @@ function register_cpt_clipping() {
         'labels' => $labels,
         'hierarchical' => false,
         
-        'supports' => array( 'title', 'custom-fields' ),
+        'supports' => array( 'title', 'editor', 'custom-fields' ),
         
         'public' => true,
         'show_ui' => true,

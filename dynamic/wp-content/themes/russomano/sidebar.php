@@ -16,7 +16,7 @@
 								<legend>Newsletter</legend>
 								<input type="email" name="" id="" class="text" required aria-required="true" placeholder="Digite o seu e-mail e dê “enter”" aria-label="Buscar por">
 								<button type="submit">Ok</button>
-								<a href="#" class="privacy">Acesse a Política de Privacidade</a>
+								<a href="<?php echo get_permalink( 147 ); ?>" class="privacy">Acesse a Política de Privacidade</a>
 							</fieldset>
 						</form>
 					</aside>
