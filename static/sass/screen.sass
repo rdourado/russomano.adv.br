@@ -408,9 +408,6 @@ a
 	float: left
 	margin: 0 0 0 20px
 	width: 300px
-	&:nth-child(3n+1)
-		clear: both
-		margin-left: 0
 	a 
 		display: block
 	img
@@ -419,6 +416,10 @@ a
 		margin: 0 0 18px
 	&:before
 		display: none !important
+.child-item
+	&:nth-child(3n+1)
+		clear: both
+		margin-left: 0
 
 .child-title
 	color: $textColor
@@ -561,6 +562,9 @@ a
 		clear: none
 		margin-left: 20px
 		width: 300px
+		&:nth-child(n)
+			clear: none
+			margin-left: 20px
 		&:nth-child(3n+1)
 			clear: both
 			margin-left: 0
