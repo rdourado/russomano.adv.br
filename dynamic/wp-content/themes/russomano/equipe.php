@@ -19,7 +19,7 @@ Template name: Equipe
 						<?php my_field_image( get_sub_field( 'image' ), 'post-thumbnail' ); ?>
 
 						<h3 class="team-name"><?php the_sub_field( 'name' ) ?></h3>
-						<p class="team-job"><?php the_sub_field( 'job' ) ?></p>
+						<p class="team-job"><?php my_field_job( get_sub_field( 'job' ), get_sub_field( 'email' ) ) ?></p>
 					</li>
 <?php 				endwhile; ?>
 				</ul>
@@ -27,13 +27,13 @@ Template name: Equipe
 
 <?php 			if ( get_field( 'advogados' ) ) : ?>
 				<h3>Advogados</h3>
-				<ul class="team-list">
+				<ul class="team-list team-wide">
 <?php 				while( has_sub_field( 'advogados' ) ) : ?>
 					<li class="team-item">
-						<?php my_field_image( get_sub_field( 'image' ), 'thumbnail' ); ?>
+						<?php my_field_image( get_sub_field( 'image' ), 'post-thumbnail' ); ?>
 
 						<h3 class="team-name"><?php the_sub_field( 'name' ) ?></h3>
-						<p class="team-job"><?php the_sub_field( 'job' ) ?></p>
+						<p class="team-job"><?php my_field_job( get_sub_field( 'job' ), get_sub_field( 'email' ) ) ?></p>
 					</li>
 <?php 				endwhile; ?>
 				</ul>
@@ -41,12 +41,16 @@ Template name: Equipe
 
 <?php 			if ( get_field( 'consultores' ) ) : ?>
 				<h3>Consultores jurídicos</h3>
-				<ul class="team-list">
+				<ul class="team-list team-wide">
 <?php 				while( has_sub_field( 'consultores' ) ) : ?>
 					<li class="team-item">
-						<?php my_field_image( get_sub_field( 'image' ), 'thumbnail' ); ?>
+						<?php my_field_image( get_sub_field( 'image' ), 'post-thumbnail' ); ?>
 
 						<h3 class="team-name"><?php the_sub_field( 'name' ) ?></h3>
+<?php 					if ( get_sub_field( 'email' ) ) :
+							$email = antispambot( get_sub_field( 'email' ) ); ?>
+						<p class="team-job"><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
+<?php 					endif; ?>
 					</li>
 <?php 				endwhile; ?>
 				</ul>

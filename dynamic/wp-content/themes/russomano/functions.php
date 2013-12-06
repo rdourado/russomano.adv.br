@@ -57,14 +57,23 @@ function my_get_sidebar() {
 function my_field_image( $value, $size ) {
 	if ( ! empty( $value ) ) {
 		echo wp_get_attachment_image( $value, $size );
-	} else {
+	/*} else {
 		$attr = '';
 		switch( $size ) {
 			case 'thumbnail' : $attr = 'width="292" height="192"'; break;
 			default : $attr = 'width="212" height="192"'; break;
 		}
-		echo '<img src="' . get_stylesheet_directory_uri() . '/img/dot.gif" alt="" ' . $attr . ' />';
+		echo '<img src="' . get_stylesheet_directory_uri() . '/img/dot.gif" alt="" ' . $attr . ' />';*/
 	}
+}
+
+function my_field_job( $job = '', $email = '' ) {
+	$data = array( $job );
+	if ( ! empty( $email ) ) {
+		$email = antispambot( $email );
+		$data[] = "<a href='mailto:{$email}'>{$email}</a>";
+	}
+	echo implode( '<br>', $data );
 }
 
 function my_comment_form() {
