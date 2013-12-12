@@ -515,6 +515,7 @@ a
 	@include linear-gradient(top, (rgb(63,61,46) rgb(14,13,8)), (0 100%))
 	.wrap
 		background: #000 url(../img/brasilia.jpg) no-repeat
+		background-size: cover
 		height: 340px
 		margin: 0
 		padding: 25px 45px
@@ -534,16 +535,17 @@ a
 .home
 	.child-title
 		padding-left: 26px
+		@include icon(folder, 2px, 3px)
 	.child-item
-		&:nth-child(1) .child-title
-			@include icon(folder, 2px, 3px)
-		&:nth-child(2) .child-title
-			@include icon(doc, 2px, 2px)
-		&:nth-child(3)
-			.child-title
-				@include icon(mail, 2px, 5px)
-			.child-hook
-				@include icon(squares, 1px, 1px)
+		// &:nth-child(1) .child-title
+			// @include icon(folder, 2px, 3px)
+		// &:nth-child(2) .child-title
+			// @include icon(doc, 2px, 2px)
+		// &:nth-child(3)
+			// .child-title
+				// @include icon(mail, 2px, 5px)
+			// .child-hook
+				// @include icon(squares, 1px, 1px)
 
 // Equipe
 
