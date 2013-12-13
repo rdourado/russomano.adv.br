@@ -3,8 +3,8 @@
 						'post_type' 	=> 'page',
 						'post_parent' 	=> $atuacaoID,
 						'post__not_in' 	=> array( $post->ID ),
-						'orderby' 		=> 'rand',
-						// 'order' 		=> 'ASC',
+						'orderby' 		=> 'menu_order',
+						'order' 		=> 'ASC',
 					) );
 					if ( $loop->have_posts() ) : ?>
 					<aside class="widget widget-services">
