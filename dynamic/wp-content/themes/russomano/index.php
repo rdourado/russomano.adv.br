@@ -44,12 +44,13 @@ global $homeID, $atuacaoID;
 				wp_reset_postdata(); ?>
 
 				<li class="child-item child-cat-equipe">
-					<a href="<?php echo get_permalink( 10 ); ?>">
-						<h3 class="child-title">Equipe com alto padrão de qualidade</h3>
-						<img src="http://dummyimage.com/292x192" alt="" class="child-image" width="292" height="192">
-						<h4 class="child-name">Dr. Mitch McDeere</h4>
-						<p class="child-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-						<span class="child-hook">Conheça toda a equipe Russomano Advocacia</span>
+					<a href="<?php the_field( 'child_link', $homeID ) ?>">
+						<h3 class="child-title"><?php the_field( 'child_title', $homeID ) ?></h3>
+						<?php echo wp_get_attachment_image( get_field( 'child_image', $homeID ), 'post-thumbnail' ); ?>
+
+						<!-- <h4 class="child-name"></h4> -->
+						<p class="child-text"><?php the_field( 'child_excerpt', $homeID ) ?></p>
+						<span class="child-hook"><?php the_field( 'child_hook', $homeID ) ?></span>
 					</a>
 				</li>
 
